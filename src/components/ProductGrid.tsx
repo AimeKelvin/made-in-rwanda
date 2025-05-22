@@ -1,6 +1,7 @@
 
 import React from "react";
 import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -24,15 +25,24 @@ const ProductGrid: React.FC<ProductGridProps> = ({ title, products }) => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            category={product.category}
-            price={product.price}
-            image={product.image}
-          />
+          <Link to={`/product/${product.id}`} key={product.id} className="block group">
+            <ProductCard
+              id={product.id}
+              name={product.name}
+              category={product.category}
+              price={product.price}
+              image={product.image}
+            />
+          </Link>
         ))}
+      </div>
+      <div className="mt-12 text-center">
+        <Link 
+          to="/browse" 
+          className="inline-flex items-center justify-center rounded-md bg-black px-8 py-3 text-white hover:bg-black/90 transition-colors"
+        >
+          View All Products
+        </Link>
       </div>
     </section>
   );
