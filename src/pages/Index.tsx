@@ -71,7 +71,6 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
-      
       <ProductGrid title="Best Sellers" products={productsData} />
       
       <section className="py-16 bg-black text-white" id="about">
